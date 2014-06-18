@@ -1,9 +1,12 @@
 <div class='row'>
-	<div class='col-md-6'>
+	<div class='col-md-5'>
 		<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
 				<input ng-model='filterText' type="text" class="form-control" placeholder="Filter">
 		</div>
+	</div>
+	<div class='col-md-1'>
+		<button ng-hide='geoEnabled' ng-click='enableGeo()' class='btn btn-warning'>abilita geolocalizzazione</button>
 	</div>
 	<div class='col-md-6'>
 		<div class="btn-group pull-right">
@@ -49,7 +52,7 @@
 					<div class='col-md-2'>
 						<div class='pull-right'>
 							maps goes here<br>
-							<img src='http://placehold.it/100x100' class='img-rounded' />
+							<img ng-src="http://maps.googleapis.com/maps/api/staticmap?markers=|{{place.loc.coordinates[1]}},{{place.loc.coordinates[0]}}&zoom=15&size=150x100&key={{apikey}}" class='img-rounded' />
 						</div>
 					</div>
 				</div>

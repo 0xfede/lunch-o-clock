@@ -1,13 +1,25 @@
-angular.module('lunchApp').factory('places', ['$http',function ($http) {
+angular.module('lunchApp').factory('places', ['$resource',function ($resource) {
 	
+	var places = $resource("./places/:id",{id: "@_id"});
+
 	return {
 
-		getPlaces : function(){
-			return $http.get("./data/places.json");
+		getPlaces : function(geo){
+			var params = {};
+			/*
+			if (geo) params = { lat : geo.lat, lon : geo.lon };
+			return $http.get("./data/places.json",{
+				params : params
+			});
+			*/
+			if (geo) return places.query({ lat : geo.lat, lon : geo.lon }).$promise;
+			return places.query().$promise;
+
 		},
 
 		getPlaceById : function(id){
-			return $http.get("./data/place_"+id+".json");
+			//return $http.get("./data/place_"+id+".json");
+			return places.get(id).$promise;
 		}
 
 	};

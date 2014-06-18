@@ -1,4 +1,4 @@
-angular.module('lunchApp', ['ngRoute', 'ui.bootstrap'])
+angular.module('lunchApp', ['ngRoute','ngResource','ui.bootstrap'])
 .config(['$routeProvider',function ($routeProvider) {
 	$routeProvider.
 		when('/', {
