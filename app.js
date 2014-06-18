@@ -20,7 +20,7 @@ app.use(session({
 }));
 app.use(express.static(__dirname + '/public'));
 
-app.get('/api/places', function(req, res) {
+app.get('/places', function(req, res) {
   db.collection('places').find().toArray(function(err, data) {
     if (err) {
       res.send(500, 'Internal Server Error');
