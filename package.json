@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/0xfede/lunch-o-clock",
   "dependencies": {
-    "express": "^4.4.3"
+    "express": "^4.4.3",
+    "mongodb": "^1.4.6"
   }
 }
