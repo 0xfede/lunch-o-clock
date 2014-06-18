@@ -16,7 +16,8 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
 app.use(cookieParser());
 app.use(session({
   secret: 'segretoooo',
-  store: new MongoStore({ db: db })
+  store: new MongoStore({ db: db }),
+  cookie: {httpOnly:false}
 }));
 app.use(express.static(__dirname + '/public'));
 

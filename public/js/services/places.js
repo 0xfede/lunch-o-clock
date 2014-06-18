@@ -1,25 +1,29 @@
 angular.module('lunchApp').factory('places', ['$resource',function ($resource) {
 	
-	var places = $resource("./places/:id",{id: "@_id"});
+	var places = $resource("./places/:id",{id: "@id"});
+	var votes  = $resource("./places/:id/:type/:attr",{},{
+		upvote: {method:'PUT', params: {id:"@id",type:"@type",attr:"@attr"}},
+  		downvote: {method:'DELETE', params: {id:"@id",type:"@type",attr:"@attr"} }
+		
+	});
 
 	return {
 
 		getPlaces : function(geo){
-			var params = {};
-			/*
-			if (geo) params = { lat : geo.lat, lon : geo.lon };
-			return $http.get("./data/places.json",{
-				params : params
-			});
-			*/
 			if (geo) return places.query({ lat : geo.lat, lon : geo.lon }).$promise;
 			return places.query().$promise;
-
 		},
 
 		getPlaceById : function(id){
-			//return $http.get("./data/place_"+id+".json");
-			return places.get(id).$promise;
+			return places.get({id:id}).$promise;
+		},
+
+		addVote : function(placeid,cat,attrId){
+			return votes.upvote({id:placeid,type:cat,attr:attrId}).$promise;
+		},
+
+		remVote : function(placeid,cat,attrId){
+			return votes.downvote({id:placeid,type:cat,attr:attrId}).$promise;
 		}
 
 	};

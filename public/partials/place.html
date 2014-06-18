@@ -30,13 +30,13 @@
 	<div class='col-md-6'>
 		<h5>Pro</h5>
 		<div class="list-group">
-		  <a class="list-group-item" ng-click="toggleVote(pro)" ng-class="{'list-group-item-success' : (pro.length > 0 && !voted(pro)), 'list-group-item-info' : voted(pro)}" ng-repeat="(proid,pro) in place.pros">{{proid}} <span ng-show='pro.length > 0' class='badge'>{{pro.length}}</span></a>
+		  <a class="list-group-item" ng-click="toggleVote(pro,'pros',proid)" ng-class="{'list-group-item-success' : (pro.length > 0 && !voted(pro)), 'list-group-item-info' : voted(pro)}" ng-repeat="(proid,pro) in place.pros">{{proid}} <span ng-show='pro.length > 0' class='badge'>{{pro.length}}</span></a>
 		</div>
 	</div>
 	<div class='col-md-6'>
 		<h5>Contro</h5>
 		<div class="list-group">
-		  <a class="list-group-item" ng-click="toggleVote(cons)" ng-class="{'list-group-item-danger' : (cons.length > 0 && !voted(cons)),'list-group-item-info':voted(cons)}" ng-repeat="(consid,cons) in place.cons">{{consid}} <span ng-show='cons.length > 0' class='badge'>{{cons.length}}</span></a>
+		  <a class="list-group-item" ng-click="toggleVote(cons,'cons',consid)" ng-class="{'list-group-item-danger' : (cons.length > 0 && !voted(cons)),'list-group-item-info':voted(cons)}" ng-repeat="(consid,cons) in place.cons">{{consid}} <span ng-show='cons.length > 0' class='badge'>{{cons.length}}</span></a>
 		</div>
 	</div>
 </div>

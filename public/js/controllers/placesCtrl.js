@@ -23,6 +23,8 @@ angular.module('lunchApp')
 
 	var loadPlaces = function(geo){
 		if (geo) $scope.geoEnabled = true;
+		$scope.places = [];
+
 		places.getPlaces(geo).then(function(data){
 
 			angular.forEach(data, function(place){
