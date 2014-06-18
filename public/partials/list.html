@@ -7,7 +7,7 @@
 	</div>
 	<div class='col-md-6'>
 		<div class="btn-group pull-right">
-					<button class="btn btn-default" ng-click="orderDir=true" ng-model="radioModel" btn-radio="'pro'" uncheckable>PRO</button>
+					<button class="btn btn-default" ng-click="orderDir=true" ng-model="radioModel" btn-radio="'pros'" uncheckable>PRO</button>
 					<button class="btn btn-default" ng-click="orderDir=true" ng-model="radioModel" btn-radio="'cons'" uncheckable>CONTRO</button>
 					<button class="btn btn-default" ng-click="orderDir=false" ng-model="radioModel" btn-radio="'name'" uncheckable>NOME</button>
 			</div>
@@ -30,7 +30,7 @@
 									<img class="media-object img-circle" src="http://placehold.it/80x80" alt="...">
 								</a>
 								<article class="media-body">
-									<h1 class="h4 media-heading"><a href='#/places/{{place.id}}'>{{place.name}}</a></h1>
+									<h1 class="h4 media-heading"><a href='#/places/{{place._id}}'>{{place.name}}</a></h1>
 									<p>{{place.address.street}} <span ng-show='place.address.civic'>, {{place.address.civic}}</span><br>
 									{{place.address.city}}, {{place.address.prov}} {{place.address.cap}}<br>
 									<abbr title="Phone">P:</abbr> {{place.address.phone}}</p>
@@ -38,7 +38,7 @@
 							</div>
 							<div class='col-md-2 text-center'>
 								<p class="h5 text-success">PRO</p>
-								<span class='badge'>{{place.pro}}</span>
+								<span class='badge'>{{place.pros}}</span>
 							</div>
 							<div class='col-md-2 text-center'>
 								<p class="h5 text-warning">CONTRO</p>
