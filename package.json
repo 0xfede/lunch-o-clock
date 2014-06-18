@@ -1,0 +1,22 @@
+{
+  "name": "lunch-o-clock",
+  "version": "0.0.2",
+  "description": "Vivocha Tech Evenings: Lunch O'Clock sample app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0xfede/lunch-o-clock.git"
+  },
+  "author": "VivochaLabs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0xfede/lunch-o-clock/issues"
+  },
+  "homepage": "https://github.com/0xfede/lunch-o-clock",
+  "dependencies": {
+    "express": "^4.4.3"
+  }
+}
