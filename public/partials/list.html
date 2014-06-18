@@ -12,6 +12,7 @@
 		<div class="btn-group pull-right">
 					<button class="btn btn-default" ng-click="orderDir=true" ng-model="radioModel" btn-radio="'pros'" uncheckable>PRO</button>
 					<button class="btn btn-default" ng-click="orderDir=true" ng-model="radioModel" btn-radio="'cons'" uncheckable>CONTRO</button>
+					<button ng-show='geoEnabled' class="btn btn-default" ng-click="orderDir=false" ng-model="radioModel" btn-radio="'dis'" uncheckable>DISTANZA</button>
 					<button class="btn btn-default" ng-click="orderDir=false" ng-model="radioModel" btn-radio="'name'" uncheckable>NOME</button>
 			</div>
 	</div>
@@ -51,7 +52,7 @@
 					</div>
 					<div class='col-md-2'>
 						<div class='pull-right'>
-							maps goes here<br>
+							<span ng-show="place.dis">{{place.dis | distance}}</span><br>
 							<img ng-src="http://maps.googleapis.com/maps/api/staticmap?markers=|{{place.loc.coordinates[1]}},{{place.loc.coordinates[0]}}&zoom=15&size=150x100&key={{apikey}}" class='img-rounded' />
 						</div>
 					</div>

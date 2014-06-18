@@ -22,9 +22,12 @@ angular.module('lunchApp')
 	};
 
 	var loadPlaces = function(geo){
-		if (geo) $scope.geoEnabled = true;
+		if (geo) {
+			$scope.geoEnabled = true;
+			$scope.radioModel = "dis";
+			$scope.orderDir = false;
+		}
 		$scope.places = [];
-
 		places.getPlaces(geo).then(function(data){
 
 			angular.forEach(data, function(place){

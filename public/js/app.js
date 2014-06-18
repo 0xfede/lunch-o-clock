@@ -13,3 +13,13 @@ angular.module('lunchApp', ['ngRoute','ngResource','ngCookies','ui.bootstrap'])
 			redirectTo: '/' 
 		});
 }])
+.filter('distance', function () {
+	return function (input) {
+		input = parseInt(input);
+	    if (input >= 1000) {
+	        return (input/1000).toFixed(2) + 'km';
+	    } else {
+	        return input + 'm';
+	    }
+	}
+});
