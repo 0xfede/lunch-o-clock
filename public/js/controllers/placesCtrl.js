@@ -8,6 +8,7 @@ angular.module('lunchApp')
 	$scope.places = [];
 
 	$scope.geoEnabled = false;
+	$scope.geoLoading = false;
 
 	var prosCount = function(place){
 		var t = 0;
@@ -23,13 +24,12 @@ angular.module('lunchApp')
 
 	var loadPlaces = function(geo){
 		if (geo) {
-			$scope.geoEnabled = true;
 			$scope.radioModel = "dis";
 			$scope.orderDir = false;
 		}
 		$scope.places = [];
 		places.getPlaces(geo).then(function(data){
-
+			$scope.geoLoading = false;
 			angular.forEach(data, function(place){
 				place.pros = prosCount(place);
 				place.cons = consCount(place);
@@ -42,6 +42,8 @@ angular.module('lunchApp')
 	}
 
 	$scope.enableGeo = function(){
+		$scope.geoEnabled = true;
+		$scope.geoLoading = true;
 		$window.navigator.geolocation.getCurrentPosition(function(data){
 			loadPlaces({lat:data.coords.latitude,lon:data.coords.longitude});
 		});		
