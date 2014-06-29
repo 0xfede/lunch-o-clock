@@ -1,8 +1,11 @@
+<a href='#/insert'>aggiungi ristorante</a>
+<hr>
+
 <div class='row'>
 	<div class='col-md-5'>
 		<div class="input-group">
-				<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-				<input ng-model='filterText' type="text" class="form-control" placeholder="Filter">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+			<input ng-model='filterText' type="text" class="form-control" placeholder="Filter">
 		</div>
 	</div>
 	<div class='col-md-2 text-center'>
@@ -13,11 +16,11 @@
 	</div>
 	<div class='col-md-5'>
 		<div class="btn-group pull-right">
-					<button class="btn btn-default" ng-click="orderDir=true" ng-model="radioModel" btn-radio="'pros'" uncheckable>PRO</button>
-					<button class="btn btn-default" ng-click="orderDir=true" ng-model="radioModel" btn-radio="'cons'" uncheckable>CONTRO</button>
-					<button ng-show='geoEnabled' class="btn btn-default" ng-click="orderDir=false" ng-model="radioModel" btn-radio="'dis'" uncheckable>DISTANZA</button>
-					<button class="btn btn-default" ng-click="orderDir=false" ng-model="radioModel" btn-radio="'name'" uncheckable>NOME</button>
-			</div>
+			<button class="btn btn-default" ng-click="orderDir=true" ng-model="radioModel" btn-radio="'pros'" uncheckable>PRO</button>
+			<button class="btn btn-default" ng-click="orderDir=true" ng-model="radioModel" btn-radio="'cons'" uncheckable>CONTRO</button>
+			<button ng-show='geoEnabled' class="btn btn-default" ng-click="orderDir=false" ng-model="radioModel" btn-radio="'dis'" uncheckable>DISTANZA</button>
+			<button class="btn btn-default" ng-click="orderDir=false" ng-model="radioModel" btn-radio="'name'" uncheckable>NOME</button>
+		</div>
 	</div>
 </div>
 
@@ -55,8 +58,7 @@
 					</div>
 					<div class='col-md-2'>
 						<div class='pull-right'>
-							<span ng-show="place.dis">{{place.dis | distance}}</span><br>
-							<img ng-src="http://maps.googleapis.com/maps/api/staticmap?markers=|{{place.loc.coordinates[1]}},{{place.loc.coordinates[0]}}&zoom=15&size=150x100&key={{apikey}}" class='img-rounded' />
+							<static-map data='place' zoom='14'></static-map>
 						</div>
 					</div>
 				</div>

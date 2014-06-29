@@ -9,6 +9,10 @@ angular.module('lunchApp').factory('places', ['$resource',function ($resource) {
 
 	return {
 
+		savePlace : function(place){
+			return places.save(place).$promise;
+		},
+
 		getPlaces : function(geo){
 			if (geo) return places.query({ lat : geo.lat, lon : geo.lon }).$promise;
 			return places.query().$promise;
@@ -24,6 +28,14 @@ angular.module('lunchApp').factory('places', ['$resource',function ($resource) {
 
 		remVote : function(placeid,cat,attrId){
 			return votes.downvote({id:placeid,type:cat,attr:attrId}).$promise;
+		},
+
+		getProsList : function(){
+			return ["Cucina Ottima","Bel Posto","Servizio Veloce"];
+		},
+
+		getConsList : function(){
+			return ["Posto Sporco","Piatti Sempre Freddi","Servizio Lento"];
 		}
 
 	};

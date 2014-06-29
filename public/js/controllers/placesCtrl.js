@@ -1,8 +1,6 @@
 angular.module('lunchApp')
 .controller('placesCtrl', ['$scope','$window','places', function ($scope,$window,places) {
 	
-	$scope.apikey = "AIzaSyDeyQNp1ywHcgwuqqIFfLqVX_KEt8s0oQQ";
-
 	$scope.radioModel = "pros";
 	$scope.orderDir = true;
 	$scope.places = [];

@@ -1,4 +1,4 @@
-angular.module('lunchApp', ['ngRoute','ngResource','ngCookies','ui.bootstrap'])
+angular.module('lunchApp', ['ngRoute','ngResource','ngCookies','ui.bootstrap','googleGeo'])
 .config(['$routeProvider',function ($routeProvider) {
 	$routeProvider.
 		when('/', {
@@ -8,6 +8,10 @@ angular.module('lunchApp', ['ngRoute','ngResource','ngCookies','ui.bootstrap'])
 		when('/places/:placeid', {
 			templateUrl: './partials/place.html',
 			controller: 'placeCtrl'
+		}).
+		when('/insert', {
+			templateUrl: './partials/insert.html',
+			controller: 'insertCtrl'
 		}).
 		otherwise({ 
 			redirectTo: '/' 

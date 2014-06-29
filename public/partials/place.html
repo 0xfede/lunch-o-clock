@@ -32,11 +32,34 @@
 		<div class="list-group">
 		  <a class="list-group-item" ng-click="toggleVote(pro,'pros',proid)" ng-class="{'list-group-item-success' : (pro.length > 0 && !voted(pro)), 'list-group-item-info' : voted(pro)}" ng-repeat="(proid,pro) in place.pros">{{proid}} <span ng-show='pro.length > 0' class='badge'>{{pro.length}}</span></a>
 		</div>
+
+		<div class="input-group">
+  			<input type="text" 
+  			   placeholder="Aggiungi un nuovo Pro"
+			   ng-model="proselected" 
+			   typeahead="newpro for newpro in proslist | filter:$viewValue | limitTo:8" 
+			   class="form-control">
+
+  			<span class="btn input-group-addon glyphicon glyphicon-plus" ng-click='addPros()'></span>
+		</div>
+
+		
+
 	</div>
 	<div class='col-md-6'>
 		<h5>Contro</h5>
 		<div class="list-group">
 		  <a class="list-group-item" ng-click="toggleVote(cons,'cons',consid)" ng-class="{'list-group-item-danger' : (cons.length > 0 && !voted(cons)),'list-group-item-info':voted(cons)}" ng-repeat="(consid,cons) in place.cons">{{consid}} <span ng-show='cons.length > 0' class='badge'>{{cons.length}}</span></a>
+		</div>
+
+		<div class="input-group">
+  			<input type="text" 
+  			   placeholder="Aggiungi un nuovo Contro"
+			   ng-model="conselected" 
+			   typeahead="newcon for newcon in conslist | filter:$viewValue | limitTo:8" 
+			   class="form-control">
+
+  			<span class="btn input-group-addon glyphicon glyphicon-plus" ng-click='addCons()'></span>
 		</div>
 	</div>
 </div>

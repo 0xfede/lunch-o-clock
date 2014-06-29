@@ -1,0 +1,6 @@
+body { padding-top: 70px; }
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+input.ng-invalid.ng-dirty {
+	border: 2px solid red;
+}

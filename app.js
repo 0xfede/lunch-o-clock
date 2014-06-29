@@ -1,5 +1,6 @@
 var express = require('express');
 var mongodb = require('mongodb');
+var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
@@ -13,6 +14,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
     process.exit(1);
   } else {
 
+app.use(bodyParser()); 
 app.use(cookieParser());
 app.use(session({
   secret: 'segretoooo',
@@ -21,6 +23,19 @@ app.use(session({
 }));
 app.use(express.static(__dirname + '/public'));
 
+
+app.post('/places', function(req, res) {
+
+  db.collection('places').update({name:req.body.name},req.body,{ upsert : true, raw:true },function(err, data){
+    if (err){
+      res.send(500, 'Internal Server Error');
+    } else {
+      console.log(data);
+      res.jsonp(data);
+    }
+  });
+  
+});
 app.get('/places', function(req, res) {
   db.collection('places').find().toArray(function(err, data) {
     if (err) {

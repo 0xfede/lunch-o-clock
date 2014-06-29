@@ -35,7 +35,18 @@ angular.module('lunchApp')
 		return total;
 	}
 
+	$scope.addPros = function(){
+		console.log("top");
+		if ($scope.place.pros && $scope.place.pros[$scope.proselected]) return;
+		if ($scope.place.pros == undefined) $scope.place.pros = {};
+		$scope.place.pros[$scope.proselected] = [];
+	}
+
+	$scope.proslist = places.getProsList();
+	$scope.conslist = places.getConsList();
+
 	places.getPlaceById($route.current.params.placeid).then(function(data){
 		$scope.place = data;
+		console.log($scope.place);
 	});
 }])
