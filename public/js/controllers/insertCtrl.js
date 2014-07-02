@@ -1,5 +1,5 @@
 angular.module('lunchApp')
-.controller('insertCtrl', ['$scope','getGeoInfo','places', function ($scope,getGeoInfo,places) {
+.controller('insertCtrl', ['$scope','$location','getGeoInfo','places', function ($scope,$location,getGeoInfo,places) {
 
 	$scope.placeToStore = {};
 	$scope.locationNotFound = false;
@@ -42,12 +42,15 @@ angular.module('lunchApp')
 	}
 
     $scope.save = function(){
-    	console.log("saving json")
-		places.savePlace($scope.placeToStore).then(function(data){
-			console.log("saved");
+    	
+    	places.savePlace($scope.placeToStore).then(function(data){
+			$location.path("/places/" + data._id);
+
 		}, function(err){
 			console.log("error saving");
 		});
+		
+		
 	}
 
 }]);

@@ -3,6 +3,7 @@ var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var util = require('util'); 
 var MongoStore = require('connect-mongo')(session);
 var MongoClient = mongodb.MongoClient;
 var ObjectID = mongodb.ObjectID;
@@ -26,12 +27,12 @@ app.use(express.static(__dirname + '/public'));
 
 app.post('/places', function(req, res) {
 
-  db.collection('places').update({name:req.body.name},req.body,{ upsert : true, raw:true },function(err, data){
+  db.collection('places').insert(req.body,{},function(err, data){
     if (err){
       res.send(500, 'Internal Server Error');
     } else {
-      console.log(data);
-      res.jsonp(data);
+      if (util.isArray(data)) res.jsonp(data[0]);
+      else res.jsonp(data);
     }
   });
   

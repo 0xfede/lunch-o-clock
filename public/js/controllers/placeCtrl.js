@@ -36,7 +36,6 @@ angular.module('lunchApp')
 	}
 
 	$scope.addPros = function(){
-		console.log("top");
 		if ($scope.place.pros && $scope.place.pros[$scope.proselected]) return;
 		if ($scope.place.pros == undefined) $scope.place.pros = {};
 		$scope.place.pros[$scope.proselected] = [];
@@ -47,6 +46,5 @@ angular.module('lunchApp')
 
 	places.getPlaceById($route.current.params.placeid).then(function(data){
 		$scope.place = data;
-		console.log($scope.place);
 	});
 }])
